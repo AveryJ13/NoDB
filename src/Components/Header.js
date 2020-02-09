@@ -1,8 +1,8 @@
 import React from 'react'
-
-function Header(props){
-    return(<div>
-        <p>Player List</p>
+import '../App.css'
+function Header(props) {
+    return (<div>
+        <h1 className='headerDiv'>List</h1>
     </div>)
 }
 

@@ -1,11 +1,11 @@
 import React from 'react'
 import EditPlayer from './EditPlayer'
-
+import '../App.css'
 function DisplayTierList(props) {
 
     const listDisplay = props.players.map(el => {
-        return (<div>{el.name}
-            <button onClick={() => { props.deletePlayer(el.id) }}>Delete</button>
+        return (<div className='buttonStacking'>{el.name}
+            <button className='deleteButton' onClick={() => { props.deletePlayer(el.id) }}>Delete</button>
             <EditPlayer editPlayer={props.editPlayer} id={el.id} name={el.name} />
         </div>)
 
@@ -13,8 +13,10 @@ function DisplayTierList(props) {
 
 
     return (
-        <div>
-            {listDisplay}
+        <div className='parent'>
+            <div className='alignButtons'>
+                {listDisplay}
+            </div>
         </div>
     )
 }

@@ -1,3 +1,46 @@
 .App {
   text-align: center;
 }
+
+body {
+  background-image: url("https://wallpaperheart.com/wp-content/uploads/2018/04/wallpaper-good-background-images.jpg");
+  color: white;
+  image-orientation: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.addButton {
+  background: #ee5f00;
+}
+
+.deleteButton {
+  background: #ee5f00;
+}
+
+.headerDiv {
+  background: ;
+  color: white;
+}
+
+.parent {
+  display: flex;
+  justify-content: center;
+}
+
+.alignButtons {
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  width: 20vw;
+  align-content: stretch;
+}
+
+.buttonStacking {
+  margin-top: 13px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}

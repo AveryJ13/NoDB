@@ -18,8 +18,9 @@ class EditPlayer extends Component {
     }
 
     toggleEdit = () => {
+
         this.setState({
-            toggle: !this.toggle
+            toggle: !this.state.toggle
         })
     }
 

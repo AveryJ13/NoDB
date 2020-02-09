@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import Header from './Components/Header'
 import CreatePlayerCards from './Components/CreatePlayerCards'
 import DisplayTierList from './Components/DisplayTierList'
@@ -7,9 +7,9 @@ import './App.css';
 import axios from 'axios'
 
 
-class App extends Component{
+class App extends Component {
 
-  constructor(props){
+  constructor(props) {
     super(props)
     this.state = {
       aTier: [],
@@ -21,31 +21,31 @@ class App extends Component{
     }
   }
 
-  
+
   getStat = () => {
     axios.get('/api/tier-list').then(response => {
-      this.setState({players: response.data})
+      this.setState({ players: response.data })
     })
-    
+
   }
 
   getSelectedPlayer = (id) => {
     this.state.players.forEach(element => {
-      if (element.id === +id){
-        this.setState({selectedPlayer: element})
+      if (element.id === +id) {
+        this.setState({ selectedPlayer: element })
       }
     })
   }
 
   addPlayer = (newPlayer) => {
-    axios.post('/api/tier-list', {player: newPlayer}).then(response => {
-      this.setState({players: response.data})
+    axios.post('/api/tier-list', { player: newPlayer }).then(response => {
+      this.setState({ players: response.data })
     })
   }
   editPlayer = (id, name) => {
     console.log(name)
-    axios.put(`/api/tier-list/${id}`, {name: name}).then(res => {
-      this.setState({players: res.data})
+    axios.put(`/api/tier-list/${id}`, { name: name }).then(res => {
+      this.setState({ players: res.data })
     })
   }
   editTierPlayer = () => {
@@ -53,21 +53,20 @@ class App extends Component{
   }
   deletePlayer = (id) => {
     axios.delete(`/api/tier-list/${id}`).then(res => {
-      this.setState({players: res.data})
+      this.setState({ players: res.data })
     })
   }
   componentDidMount() {
-  this.getStat()
-  
+    this.getStat()
+
   }
-  render(){
-    
-    return(
-      <div className = 'App'>
+  render() {
+
+    return (
+      <div className='App'>
         <Header />
-        <CreatePlayerCards addPlayer = {this.addPlayer}/>
-        <DisplayTierList players = {this.state.players} deletePlayer = {this.deletePlayer} editPlayer = {this.editPlayer}/>
-        <PlayerStat getSelectedPlayer = {this.getSelectedPlayer}/>
+        <CreatePlayerCards addPlayer={this.addPlayer} />
+        <DisplayTierList players={this.state.players} deletePlayer={this.deletePlayer} editPlayer={this.editPlayer} />
       </div>
     )
   }
