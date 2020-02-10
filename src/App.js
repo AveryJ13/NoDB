@@ -38,10 +38,13 @@ class App extends Component {
   }
 
   addPlayer = (newPlayer) => {
-
-    axios.post('/api/tier-list', { player: newPlayer }).then(response => {
-      this.setState({ players: response.data })
-    }).catch(() => console.log('Error Out'))
+    if (newPlayer === '') {
+      alert('Please enter something into the list')
+    } else {
+      axios.post('/api/tier-list', { player: newPlayer }).then(response => {
+        this.setState({ players: response.data })
+      }).catch(() => console.log('Error Out'))
+    }
   }
   editPlayer = (id, name) => {
     console.log(name)
@@ -53,9 +56,13 @@ class App extends Component {
 
   }
   deletePlayer = (id) => {
-    axios.delete(`/api/tier-list/${id}`).then(res => {
-      this.setState({ players: res.data })
-    })
+    let bool = window.confirm('Are you Sure?')
+    if (bool) {
+      axios.delete(`/api/tier-list/${id}`).then(res => {
+        this.setState({ players: res.data })
+      })
+    }
+
   }
   componentDidMount() {
     this.getStat()
