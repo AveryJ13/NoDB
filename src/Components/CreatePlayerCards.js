@@ -15,11 +15,18 @@ class CreatePlayerCards extends Component {
 
     }
 
+    resetUserInput = () => {
+        this.setState({ input: '' })
+    }
+
     render() {
         return (
             <div>
-                <input onChange={(e) => { this.handleChange(e.target.value) }}></input>
-                <button className='addButton' onClick={() => this.props.addPlayer(this.state.input)}>Add Item</button>
+                <input placeholder='enter list item' value={this.state.input} onChange={(e) => { this.handleChange(e.target.value) }}></input>
+                <button className='addButton' onClick={() => {
+                    this.props.addPlayer(this.state.input)
+                    this.resetUserInput()
+                }} >Add Item</button>
             </div>
         )
     }

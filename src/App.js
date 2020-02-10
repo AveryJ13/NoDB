@@ -38,15 +38,16 @@ class App extends Component {
   }
 
   addPlayer = (newPlayer) => {
+
     axios.post('/api/tier-list', { player: newPlayer }).then(response => {
       this.setState({ players: response.data })
-    })
+    }).catch(() => console.log('Error Out'))
   }
   editPlayer = (id, name) => {
     console.log(name)
     axios.put(`/api/tier-list/${id}`, { name: name }).then(res => {
       this.setState({ players: res.data })
-    })
+    }).catch(() => console.log('Error Out'))
   }
   editTierPlayer = () => {
 
